@@ -457,6 +457,11 @@ msgid "Burnt Fees"
 msgstr ""
 
 #, elixir-format
+#: lib/block_scout_web/templates/address_token/overview.html.eex:65
+msgid "CRC Worth"
+msgstr ""
+
+#, elixir-format
 #: lib/block_scout_web/templates/common_components/_csv_export_button.html.eex:2
 msgid "CSV"
 msgstr ""
@@ -988,6 +993,11 @@ msgid "EIP-1167"
 msgstr ""
 
 #, elixir-format
+#: lib/block_scout_web/views/transaction_view.ex:214
+msgid "ERC-1155 "
+msgstr ""
+
+#, elixir-format
 #: lib/block_scout_web/views/transaction_view.ex:212
 msgid "ERC-20 "
 msgstr ""
@@ -1048,6 +1058,11 @@ msgstr ""
 #, elixir-format
 #: lib/block_scout_web/templates/stakes/_stakes_modal_claim_reward_content.html.eex:44
 msgid "Epochs range(s) or enum, e.g.:   5-9,23-27,47,50"
+msgstr ""
+
+#, elixir-format
+#: lib/block_scout_web/templates/transaction/_decoded_input_body.html.eex:10
+msgid "Error"
 msgstr ""
 
 #, elixir-format
@@ -1642,6 +1657,11 @@ msgid "Nonce"
 msgstr ""
 
 #, elixir-format
+#: lib/block_scout_web/templates/tokens/inventory/_token.html.eex:11
+msgid "Not unique Token"
+msgstr ""
+
+#, elixir-format
 #: lib/block_scout_web/templates/address/overview.html.eex:202
 msgid "Number of transactions related to this address."
 msgstr ""
@@ -2014,6 +2034,11 @@ msgstr ""
 #, elixir-format
 #: lib/block_scout_web/templates/address_token/overview.html.eex:59
 msgid "Shows the tokens held in the address (includes ERC-20, ERC-721 and ERC-1155)."
+msgstr ""
+
+#, elixir-format
+#: lib/block_scout_web/templates/address_token/overview.html.eex:66
+msgid "Shows the total CRC balance in the address."
 msgstr ""
 
 #, elixir-format
@@ -3145,6 +3170,11 @@ msgid "is not a valid transaction hash"
 msgstr ""
 
 #, elixir-format
+#: lib/block_scout_web/templates/smart_contract/_function_response.html.eex:3
+msgid "method Response"
+msgstr ""
+
+#, elixir-format
 #: lib/block_scout_web/templates/common_components/_pagination_container.html.eex:41
 msgid "of"
 msgstr ""
@@ -3190,29 +3220,4 @@ msgstr ""
 #, elixir-format
 #: lib/block_scout_web/templates/stakes/_stakes_modal_delegators_list.html.eex:18
 msgid "validator"
-msgstr ""
-
-#, elixir-format
-#: lib/block_scout_web/views/transaction_view.ex:214
-msgid "ERC-1155 "
-msgstr ""
-
-#, elixir-format
-#: lib/block_scout_web/templates/tokens/inventory/_token.html.eex:11
-msgid "Not unique Token"
-msgstr ""
-
-#, elixir-format
-#: lib/block_scout_web/templates/transaction/_decoded_input_body.html.eex:10
-msgid "Error"
-msgstr ""
-
-#, elixir-format
-#: lib/block_scout_web/templates/address_token/overview.html.eex:65
-msgid "CRC Worth"
-msgstr ""
-
-#, elixir-format, fuzzy
-#: lib/block_scout_web/templates/address_token/overview.html.eex:66
-msgid "Shows the total CRC balance in the address."
 msgstr ""
