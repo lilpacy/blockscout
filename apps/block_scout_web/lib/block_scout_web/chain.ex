@@ -239,8 +239,6 @@ defmodule BlockScoutWeb.Chain do
     %PagingOptions{options | page_number: new_page_number, page_size: new_page_size}
   end
 
-  def update_page_number(_new_page_number, options), do: options
-
   def param_to_block_number(formatted_number) when is_binary(formatted_number) do
     case Integer.parse(formatted_number) do
       {number, ""} -> {:ok, number}
