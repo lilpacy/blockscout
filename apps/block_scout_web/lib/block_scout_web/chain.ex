@@ -235,7 +235,7 @@ defmodule BlockScoutWeb.Chain do
 
   def fetch_page_number(_), do: 1
 
-  def update_page_numbers(new_page_number, new_page_size, %PagingOptions{} = options) do
+  def update_page_parameters(new_page_number, new_page_size, %PagingOptions{} = options) do
     %PagingOptions{options | page_number: new_page_number, page_size: new_page_size}
   end
 

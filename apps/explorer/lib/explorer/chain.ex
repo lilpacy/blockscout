@@ -102,7 +102,7 @@ defmodule Explorer.Chain do
 
   @burn_address_hash_str "0x0000000000000000000000000000000000000000"
 
-  @limit_showing_transaсtions 100_000
+  @limit_showing_transaсtions 10_000
   @default_page_size 50
 
   @typedoc """
@@ -4382,7 +4382,7 @@ defmodule Explorer.Chain do
 
   defp handle_random_access_paging_options(query, paging_options) do
     query
-    |> page_transaction(paging_options)
+    |> (&(if paging_options |> Map.get(:page_number, 1) |> proccess_page_number() == 1, do: &1, else: page_transaction(&1, paging_options))).()
     |> handle_page(paging_options)
   end
 
@@ -4411,7 +4411,7 @@ defmodule Explorer.Chain do
   defp proccess_page_number(number), do: number
 
   defp page_in_bounds?(page_number, page_size),
-    do: page_size < @limit_showing_transaсtions && @limit_showing_transaсtions - (page_number - 1) * page_size > 0
+    do: (page_size < @limit_showing_transaсtions) && ((@limit_showing_transaсtions - (page_number - 1) * page_size) > 0)
 
   def limit_shownig_transactions, do: @limit_showing_transaсtions
 
