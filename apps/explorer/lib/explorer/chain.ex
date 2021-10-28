@@ -4378,11 +4378,15 @@ defmodule Explorer.Chain do
     |> limit(^paging_options.page_size)
   end
 
-  defp handle_random_access_paging_options(query, empty_options) when empty_options in [nil, [], %{}], do: limit(query, ^(@default_page_size + 1))
+  defp handle_random_access_paging_options(query, empty_options) when empty_options in [nil, [], %{}],
+    do: limit(query, ^(@default_page_size + 1))
 
   defp handle_random_access_paging_options(query, paging_options) do
     query
-    |> (&(if paging_options |> Map.get(:page_number, 1) |> proccess_page_number() == 1, do: &1, else: page_transaction(&1, paging_options))).()
+    |> (&if(paging_options |> Map.get(:page_number, 1) |> proccess_page_number() == 1,
+          do: &1,
+          else: page_transaction(&1, paging_options)
+        )).()
     |> handle_page(paging_options)
   end
 
@@ -4411,7 +4415,7 @@ defmodule Explorer.Chain do
   defp proccess_page_number(number), do: number
 
   defp page_in_bounds?(page_number, page_size),
-    do: (page_size <= @limit_showing_transaсtions) && ((@limit_showing_transaсtions - page_number * page_size) >= 0)
+    do: page_size <= @limit_showing_transaсtions && @limit_showing_transaсtions - page_number * page_size >= 0
 
   def limit_shownig_transactions, do: @limit_showing_transaсtions
 

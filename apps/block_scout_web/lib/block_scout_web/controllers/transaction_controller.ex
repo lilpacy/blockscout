@@ -2,7 +2,13 @@ defmodule BlockScoutWeb.TransactionController do
   use BlockScoutWeb, :controller
 
   import BlockScoutWeb.Chain,
-    only: [fetch_page_number: 1, paging_options: 1, next_page_params: 3, update_page_parameters: 3, split_list_by_page: 1]
+    only: [
+      fetch_page_number: 1,
+      paging_options: 1,
+      next_page_params: 3,
+      update_page_parameters: 3,
+      split_list_by_page: 1
+    ]
 
   alias BlockScoutWeb.{AccessHelpers, Controller, TransactionView}
   alias Explorer.Chain
@@ -48,7 +54,7 @@ defmodule BlockScoutWeb.TransactionController do
       if fetch_page_number(params) == 1 do
         page_size = Chain.default_page_size()
 
-        pages_limit = (transactions_count |> Kernel./(page_size) |> Float.ceil() |> trunc())
+        pages_limit = transactions_count |> Kernel./(page_size) |> Float.ceil() |> trunc()
 
         case next_page_params(next_page, transactions, params) do
           nil ->
