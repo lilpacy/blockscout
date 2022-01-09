@@ -20,13 +20,12 @@ defmodule BlockScoutWeb.Resolvers.Transaction do
 
   def total_count(_, _) do
     GraphQL.total_transaction_query()
-    |> Repo.all
+    |> Repo.one
     |> case do
          nil ->
            {:error, "Something is wrong."}
-
-         [head | _] ->
-           {:ok, head}
+         count ->
+           {:ok, count}
        end
   end
 

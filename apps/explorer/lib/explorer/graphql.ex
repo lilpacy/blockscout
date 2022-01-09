@@ -91,7 +91,7 @@ defmodule Explorer.GraphQL do
   @spec total_transaction_query() :: Ecto.Query.t()
   def total_transaction_query() do
     from(
-      t in "transactions",
+      t in Transaction,
       select: count("*")
     )
   end
