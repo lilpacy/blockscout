@@ -100,6 +100,11 @@ defmodule BlockScoutWeb.Schema do
       arg(:hash, non_null(:full_hash))
       resolve(&Transaction.get_by/3)
     end
+
+    @desc "Gets total transaction count"
+    field :total_transaction, non_null(:integer) do
+      resolve(&Transaction.total_count/2)
+    end
   end
 
   subscription do

@@ -18,6 +18,22 @@ defmodule BlockScoutWeb.Resolvers.Transaction do
     |> Connection.from_query(&Repo.all/1, args, options(args))
   end
 
+  def total_count(_, _) do
+    count = GraphQL.total_transaction_query()
+            |> Repo.all
+            |> case do
+                 nil ->
+                   {:error, :not_found}
+
+                 [head | _] ->
+                   {:ok, head}
+               end
+    case count do
+      {:ok, count} -> {:ok, count}
+      {:error, :not_found} -> {:error, "Something is wrong."}
+    end
+  end
+
   defp options(%{before: _}), do: []
 
   defp options(%{count: count}), do: [count: count]

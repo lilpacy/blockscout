@@ -71,6 +71,17 @@ defmodule Explorer.GraphQL do
   end
 
   @doc """
+  Returns a query to fetch total transaction count
+  """
+  @spec total_transaction_query() :: Ecto.Query.t()
+  def total_transaction_query() do
+    from(
+      t in "transactions",
+      select: count("*")
+    )
+  end
+
+  @doc """
   Returns a token transfer for a given transaction hash and log index.
   """
   @spec get_token_transfer(map()) :: {:ok, TokenTransfer.t()} | {:error, String.t()}
