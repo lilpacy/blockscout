@@ -15,10 +15,25 @@ defmodule Explorer.GraphQL do
     Hash,
     InternalTransaction,
     TokenTransfer,
+    Block,
     Transaction
   }
 
   alias Explorer.{Chain, Repo}
+
+  @doc """
+  Returns a query to fetch transaction list
+  """
+  @spec block_list_query(map()) :: Ecto.Query.t()
+  def block_list_query(%{page_number: page_number, page_size: page_size}) do
+    offset = (max(page_number, 1) - 1) * page_size
+    from(
+      b in Block,
+      limit: ^page_size,
+      offset: ^offset,
+      select: b
+    )
+  end
 
   @doc """
   Returns a query to fetch transactions with a matching `to_address_hash`,
