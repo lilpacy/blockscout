@@ -19,19 +19,26 @@ defmodule BlockScoutWeb.Resolvers.Transaction do
   end
 
   def total_count(_, _) do
-    count = GraphQL.total_transaction_query()
-            |> Repo.all
-            |> case do
-                 nil ->
-                   {:error, :not_found}
+    GraphQL.total_transaction_query()
+    |> Repo.all
+    |> case do
+         nil ->
+           {:error, "Something is wrong."}
 
-                 [head | _] ->
-                   {:ok, head}
-               end
-    case count do
-      {:ok, count} -> {:ok, count}
-      {:error, :not_found} -> {:error, "Something is wrong."}
-    end
+         [head | _] ->
+           {:ok, head}
+       end
+  end
+
+  def transactions(_, %{page_number: _, page_size: _} = args, _) do
+    GraphQL.total_list_query(args)
+    |> Repo.all
+    |> case do
+         nil ->
+           {:error, "Something is wrong."}
+         transactions ->
+           {:ok, transactions}
+       end
   end
 
   defp options(%{before: _}), do: []

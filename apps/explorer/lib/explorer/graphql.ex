@@ -82,6 +82,20 @@ defmodule Explorer.GraphQL do
   end
 
   @doc """
+  Returns a query to fetch transaction list
+  """
+  @spec total_list_query(map()) :: Ecto.Query.t()
+  def total_list_query(%{page_number: page_number, page_size: page_size}) do
+    offset = (max(page_number, 1) - 1) * page_size
+    from(
+      t in Transaction,
+      limit: ^page_size,
+      offset: ^offset,
+      select: t
+    )
+  end
+
+  @doc """
   Returns a token transfer for a given transaction hash and log index.
   """
   @spec get_token_transfer(map()) :: {:ok, TokenTransfer.t()} | {:error, String.t()}
