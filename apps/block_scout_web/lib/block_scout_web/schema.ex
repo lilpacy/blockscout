@@ -101,12 +101,12 @@ defmodule BlockScoutWeb.Schema do
       resolve(&Transaction.get_by/3)
     end
 
-    @desc "Gets total transaction count"
+    @desc "Gets total transaction count."
     field :total_transaction, non_null(:integer) do
       resolve(&Transaction.total_count/2)
     end
 
-    @desc "Gets transaction list"
+    @desc "Gets transaction list."
     field :transactions, list_of(:transaction) do
       arg(:page_number, non_null(:integer))
       arg(:page_size, non_null(:integer))
