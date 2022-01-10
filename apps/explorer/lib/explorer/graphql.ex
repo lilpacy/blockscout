@@ -16,8 +16,9 @@ defmodule Explorer.GraphQL do
     InternalTransaction,
     TokenTransfer,
     Block,
-    Transaction
-  }
+    Transaction,
+    Address
+    }
 
   alias Explorer.{Chain, Repo}
 
@@ -32,6 +33,24 @@ defmodule Explorer.GraphQL do
       limit: ^page_size,
       offset: ^offset,
       select: b
+    )
+  end
+
+  @doc """
+  Returns a query to fetch wealthy addresses
+  """
+  @spec wealthy_addresses_query(map()) :: Ecto.Query.t()
+  def wealthy_addresses_query(%{page_number: page_number, page_size: page_size}) do
+    offset = (max(page_number, 1) - 1) * page_size
+    from(
+      a in Address,
+      where: a.fetched_coin_balance > ^0,
+      order_by: [
+        desc: a.fetched_coin_balance
+      ],
+      limit: ^page_size,
+      offset: ^offset,
+      select: a
     )
   end
 

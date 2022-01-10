@@ -73,6 +73,13 @@ defmodule BlockScoutWeb.Schema do
       complexity(fn %{hashes: hashes}, child_complexity -> length(hashes) * child_complexity end)
     end
 
+    @desc "Gets addresses sorted by balance."
+    field :wealthy_addresses, list_of(:address) do
+      arg(:page_number, non_null(:integer))
+      arg(:page_size, non_null(:integer))
+      resolve(&Address.wealthy_addresses/3)
+    end
+
     @desc "Gets a block by number."
     field :block, :block do
       arg(:number, non_null(:integer))
