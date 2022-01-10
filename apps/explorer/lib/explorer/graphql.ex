@@ -23,7 +23,7 @@ defmodule Explorer.GraphQL do
   alias Explorer.{Chain, Repo}
 
   @doc """
-  Returns a query to fetch transaction list
+  Returns a query to fetch transaction list.
   """
   @spec block_list_query(map()) :: Ecto.Query.t()
   def block_list_query(%{page_number: page_number, page_size: page_size}) do
@@ -37,7 +37,7 @@ defmodule Explorer.GraphQL do
   end
 
   @doc """
-  Returns a query to fetch wealthy addresses
+  Returns a query to fetch wealthy addresses.
   """
   @spec wealthy_addresses_query(map()) :: Ecto.Query.t()
   def wealthy_addresses_query(%{page_number: page_number, page_size: page_size}) do
@@ -105,7 +105,7 @@ defmodule Explorer.GraphQL do
   end
 
   @doc """
-  Returns a query to fetch total transaction count
+  Returns a query to fetch total transaction count.
   """
   @spec total_transaction_query() :: Ecto.Query.t()
   def total_transaction_query() do
@@ -116,7 +116,7 @@ defmodule Explorer.GraphQL do
   end
 
   @doc """
-  Returns a query to fetch transaction list
+  Returns a query to fetch transaction list.
   """
   @spec total_list_query(map()) :: Ecto.Query.t()
   def total_list_query(%{page_number: page_number, page_size: page_size}) do
