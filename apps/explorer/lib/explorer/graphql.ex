@@ -30,6 +30,7 @@ defmodule Explorer.GraphQL do
     offset = (max(page_number, 1) - 1) * page_size
     from(
       b in Block,
+      order_by: [desc: b.timestamp],
       limit: ^page_size,
       offset: ^offset,
       select: b
@@ -123,6 +124,7 @@ defmodule Explorer.GraphQL do
     offset = (max(page_number, 1) - 1) * page_size
     from(
       t in Transaction,
+      order_by: [desc: t.inserted_at],
       limit: ^page_size,
       offset: ^offset,
       select: t
